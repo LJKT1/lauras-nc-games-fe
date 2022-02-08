@@ -12,7 +12,7 @@ export const getCategories = () => {
 
 export const getReviews = (category) => {
   let path = `/reviews`;
-  if (category) path += `?category=${category}`;
+  if (category && category !== "all") path += `?category=${category}`;
   return reviewsApi.get(path).then((res) => {
     return res.data.reviews;
   });

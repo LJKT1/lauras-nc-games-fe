@@ -14,8 +14,6 @@ const Reviews = (props) => {
   }, [props.selectedCategory]);
   return (
     <main className="Reviews">
-      <h2>Reviews</h2>
-
       <ul>
         <Container fluid="md">
           <Card style={{ width: "18rem" }}>
@@ -37,7 +35,7 @@ const Reviews = (props) => {
                   </ListGroup.Item>
                 );
               })}
-            </ListGroup>{" "}
+            </ListGroup>
           </Card>
         </Container>
       </ul>

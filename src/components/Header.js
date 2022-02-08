@@ -1,8 +1,10 @@
+import Container from "react-bootstrap/Container";
+
 const Header = () => {
   return (
-    <div className="Header">
+    <Container fluid="md">
       <h1>Laura's NC Games</h1>
-    </div>
+    </Container>
   );
 };
 

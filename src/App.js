@@ -19,14 +19,17 @@ function App() {
 
   const handleSelect = (category) => {
     setSelectedCategory(category);
-    console.log(category);
   };
 
   return (
     <BrowserRouter>
       <div className="App">
         <Header />
-        <Navbar setCategory={handleSelect} categories={categories} />
+        <Navbar
+          selectedCategory={selectedCategory}
+          setCategory={handleSelect}
+          categories={categories}
+        />
         <Routes>
           <Route
             path="/"
