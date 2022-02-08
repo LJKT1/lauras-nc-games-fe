@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../utils/api";
 
-const Reviews = () => {
+const Reviews = (props) => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    getReviews().then((res) => {
+    getReviews(props.selectedCategory).then((res) => {
       setReviews(res);
     });
-  }, []);
+  }, [props.selectedCategory]);
   return (
     <main className="Reviews">
       <h2>Reviews</h2>
