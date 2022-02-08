@@ -16,7 +16,7 @@ const Reviews = () => {
         {reviews.map((review) => {
           return (
             <li key={review.review_id}>
-              <h3>{review.title}</h3>
+              <p>{review.title}</p>
               <p>Category: {review.category}</p>
               <img src={review.review_img_url} alt={review.title} />
               <p>By: {review.owner}</p>
