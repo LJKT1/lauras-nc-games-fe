@@ -1,11 +1,11 @@
-import { getReviews } from "../utils/api";
 import { useEffect, useState } from "react";
+import { getReviews } from "../utils/api";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
+
   useEffect(() => {
     getReviews().then((res) => {
-      console.log(res);
       setReviews(res);
     });
   }, []);

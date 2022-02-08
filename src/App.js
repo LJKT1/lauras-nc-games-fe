@@ -12,6 +12,8 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Reviews />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="categories/:category" element={<Reviews />} />
         </Routes>
       </div>
     </BrowserRouter>
