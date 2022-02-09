@@ -66,7 +66,7 @@ const Reviews = () => {
                       />
                       <Card.Text>Review by: {review.owner} </Card.Text>
                       <Card.Text>
-                        Votes: {review.votes} Comments: {review.comment_count}
+                        {review.votes} Votes {review.comment_count} Comments
                       </Card.Text>
                       <Card.Text>Created at: {review.created_at} </Card.Text>
                       <Button onClick={() => gotoReview(review.review_id)}>
