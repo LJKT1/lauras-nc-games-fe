@@ -4,12 +4,14 @@ import Header from "./components/Header";
 import Reviews from "./components/Reviews";
 import SingleReview from "./components/SingleReview";
 import ReviewComments from "./components/ReviewComments";
+import Nav from "./components/Nav";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
         <Header />
+        <Nav />
         <Routes>
           <Route path="/" element={<Reviews />} />
           <Route path="/reviews" element={<Reviews />} />

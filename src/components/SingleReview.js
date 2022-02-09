@@ -30,7 +30,7 @@ const SingleReview = () => {
         <Card.Text>{review.review_body}</Card.Text>
         <Card.Text>By: {review.owner} </Card.Text>
         <Card.Text>Created at: {review.created_at} </Card.Text>
-        <Accordion defaultActiveKey="0">
+        <Accordion>
           <Accordion.Item eventKey="0">
             <Accordion.Header>{review.comment_count} Comments</Accordion.Header>
             <Accordion.Body>
