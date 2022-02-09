@@ -17,3 +17,9 @@ export const getReviews = (category) => {
     return res.data.reviews;
   });
 };
+
+export const getSingleReview = (review_id) => {
+  return reviewsApi.get(`/reviews/${review_id}`).then((res) => {
+    return res.data.review;
+  });
+};

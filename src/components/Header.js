@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 const Header = () => {
   return (
     <Container fluid="md">
-      <h1>Laura's NC Games</h1>
+      <h1>Laura's NC Games Reviews</h1>
     </Container>
   );
 };

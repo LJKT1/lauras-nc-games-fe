@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Reviews from "./components/Reviews";
+import SingleReview from "./components/SingleReview";
 import { getCategories } from "./utils/api";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
             path="/reviews"
             element={<Reviews selectedCategory={selectedCategory} />}
           />
+          <Route path="/reviews/:review_id" element={<SingleReview />} />
         </Routes>
       </div>
     </BrowserRouter>
