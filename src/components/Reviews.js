@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../utils/api";
+import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
+import Button from "react-bootstrap/Button";
 
 const Reviews = (props) => {
   const [reviews, setReviews] = useState([]);
+
+  const navigate = useNavigate();
+
+  const gotoReview = (review_id) => {
+    navigate(`/reviews/${review_id}`);
+  };
 
   useEffect(() => {
     getReviews(props.selectedCategory).then((res) => {
@@ -32,6 +40,9 @@ const Reviews = (props) => {
                     <Card.Text>
                       Votes: {review.votes} Comments: {review.comment_count}
                     </Card.Text>
+                    <Button onClick={() => gotoReview(review.review_id)}>
+                      Go to Review
+                    </Button>
                   </ListGroup.Item>
                 );
               })}
