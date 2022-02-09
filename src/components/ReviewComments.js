@@ -5,13 +5,11 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { getReviewComments } from "../utils/api";
 
 const ReviewComments = (props) => {
-  console.log(props.review_id, "props.review_id");
   const review_id = props.review_id;
-  const [comments, setComments] = useState({});
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     getReviewComments(review_id).then((res) => {
-      console.log(res, "res");
       setComments(res);
     });
   }, [review_id]);
