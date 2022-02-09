@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
 import { getSingleReview } from "../utils/api";
 
 const SingleReview = () => {
@@ -19,13 +18,13 @@ const SingleReview = () => {
       <Card style={{ width: "18rem" }}>
         <Card.Title>{review.title}</Card.Title>
         <Card.Subtitle>{review.category}</Card.Subtitle>
+        <Card.Text>Designer: {review.designer}</Card.Text>
         <Card.Img
           variant="top"
           src={review.review_img_url}
           alt={review.title}
         />
         <Card.Text>{review.review_body}</Card.Text>
-        <Card.Text>Designer: {review.designer}</Card.Text>
         <Card.Text>By: {review.owner} </Card.Text>
         <Card.Text>
           Votes: {review.votes} Comments: {review.comment_count}
