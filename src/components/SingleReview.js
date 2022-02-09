@@ -34,7 +34,7 @@ const SingleReview = () => {
           <Accordion.Item eventKey="0">
             <Accordion.Header>{review.comment_count} Comments</Accordion.Header>
             <Accordion.Body>
-              <ReviewComments />
+              <ReviewComments review_id={review.review_id} />
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
