@@ -21,32 +21,36 @@ const SingleReview = () => {
   return (
     <Container fluid="md">
       <Card>
-        <Card.Title className="m-2">{review.title}</Card.Title>
-        <Card.Subtitle className="m-1">
-          Category: {review.category && titleCase(review.category)}
-        </Card.Subtitle>
-        <Card.Text className="m-1">Designer: {review.designer}</Card.Text>
-        <Card.Img
-          variant="top"
-          src={review.review_img_url}
-          alt={review.title}
-        />
-        <Card.Body>{review.review_body}</Card.Body>
-        <Card.Text className="m-1">By: {review.owner}</Card.Text>
-        <Card.Text className="m-1">
-          Created at: {new Date(review.created_at).toLocaleDateString()}
-        </Card.Text>
-        <Accordion>
-          <Accordion.Item eventKey="0">
-            <Accordion.Header>{review.comment_count} Comments</Accordion.Header>
-            <Accordion.Body>
-              {review.review_id && (
-                <ReviewComments review_id={review.review_id} />
-              )}
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
-        <ReviewVotes review={review} />
+        <Card.Body>
+          <Card.Title className="m-2">{review.title}</Card.Title>
+          <Card.Subtitle className="m-1">
+            Category: {review.category && titleCase(review.category)}
+          </Card.Subtitle>
+          <Card.Text className="m-1">Designer: {review.designer}</Card.Text>
+          <Card.Img
+            variant="top"
+            src={review.review_img_url}
+            alt={review.title}
+          />
+          <Card.Body>{review.review_body}</Card.Body>
+          <Card.Text className="m-1">By: {review.owner}</Card.Text>
+          <Card.Text className="m-1">
+            Created at: {new Date(review.created_at).toLocaleDateString()}
+          </Card.Text>
+          <Accordion>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>
+                {review.comment_count} Comments
+              </Accordion.Header>
+              <Accordion.Body>
+                {review.review_id && (
+                  <ReviewComments review_id={review.review_id} />
+                )}
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+          <ReviewVotes review={review} />
+        </Card.Body>
       </Card>
     </Container>
   );

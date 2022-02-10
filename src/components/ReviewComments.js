@@ -18,20 +18,26 @@ const ReviewComments = (props) => {
   return (
     <ul>
       <Container fluid="md">
-        <Card style={{ width: "18rem" }}>
-          <ListGroup>
-            {comments.map((comment) => {
-              return (
-                <ListGroup.Item key={comment.comment_id}>
-                  <Card.Text>{comment.body}</Card.Text>
-                  <Card.Subtitle>Author: {comment.author}</Card.Subtitle>
-                  <Card.Subtitle>Posted: {comment.created_at}</Card.Subtitle>
-                  <Card.Subtitle>{comment.votes} Votes</Card.Subtitle>
-                </ListGroup.Item>
-              );
-            })}
-          </ListGroup>
-          {/* <CommentForm review_id={review_id} /> */}
+        <Card>
+          <Card.Body>
+            <ListGroup>
+              {comments.map((comment) => {
+                return (
+                  <ListGroup.Item key={comment.comment_id}>
+                    <Card.Text>{comment.body}</Card.Text>
+                    <Card.Subtitle>Author: {comment.author}</Card.Subtitle>
+
+                    <Card.Subtitle>
+                      Posted:{" "}
+                      {new Date(comment.created_at).toLocaleDateString()}
+                    </Card.Subtitle>
+                    <Card.Subtitle>{comment.votes} Votes</Card.Subtitle>
+                  </ListGroup.Item>
+                );
+              })}
+            </ListGroup>
+            {/* <CommentForm review_id={review_id} /> */}
+          </Card.Body>{" "}
         </Card>
       </Container>
     </ul>

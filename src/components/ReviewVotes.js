@@ -12,7 +12,6 @@ const ReviewVotes = ({ review }) => {
   return (
     <>
       <Button
-        size="sm"
         onClick={() => {
           setVotes(++review.votes);
           patchReviewVotes(review.review_id, 1);
@@ -22,7 +21,6 @@ const ReviewVotes = ({ review }) => {
       </Button>
       <p className="text-center">{votes} Votes</p>
       <Button
-        size="sm"
         onClick={() => {
           setVotes(--review.votes);
           patchReviewVotes(review.review_id, -1);
