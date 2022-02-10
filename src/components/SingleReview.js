@@ -7,6 +7,7 @@ import Accordion from "react-bootstrap/Accordion";
 import { UserContext } from "../contexts/UserContext";
 import { getSingleReview, patchReviewVotes } from "../utils/api";
 import ReviewComments from "./ReviewComments";
+import { titleCase } from "../utils/textFormatting";
 
 const SingleReview = () => {
   const { review_id } = useParams();
@@ -22,17 +23,21 @@ const SingleReview = () => {
   return (
     <Container fluid="md">
       <Card style={{ width: "18rem" }}>
-        <Card.Title>{review.title}</Card.Title>
-        <Card.Subtitle>{review.category}</Card.Subtitle>
-        <Card.Text>Designer: {review.designer}</Card.Text>
+        <Card.Title className="m-2">{review.title}</Card.Title>
+        <Card.Subtitle className="m-1">
+          Category: {review.category && titleCase(review.category)}
+        </Card.Subtitle>
+        <Card.Text className="m-1">Designer: {review.designer}</Card.Text>
         <Card.Img
           variant="top"
           src={review.review_img_url}
           alt={review.title}
         />
-        <Card.Text>{review.review_body}</Card.Text>
-        <Card.Text>By: {review.owner}</Card.Text>
-        <Card.Text>Created at: {review.created_at} </Card.Text>
+        <Card.Body>{review.review_body}</Card.Body>
+        <Card.Text className="m-1">By: {review.owner}</Card.Text>
+        <Card.Text className="m-1">
+          Created at: {new Date(review.created_at).toLocaleDateString()}
+        </Card.Text>
         <Accordion>
           <Accordion.Item eventKey="0">
             <Accordion.Header>{review.comment_count} Comments</Accordion.Header>
