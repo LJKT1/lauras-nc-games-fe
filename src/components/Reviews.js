@@ -7,6 +7,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import { getCategories } from "../utils/api";
 import Queries from "./Queries";
+import { titleCase } from "../utils/textFormatting";
 
 const Reviews = () => {
   const [categories, setCategories] = useState([]);
@@ -58,7 +59,9 @@ const Reviews = () => {
                   return (
                     <ListGroup.Item key={review.review_id}>
                       <Card.Title>{review.title}</Card.Title>
-                      <Card.Subtitle>Category: {review.category}</Card.Subtitle>
+                      <Card.Subtitle className="mb-2 mt-2">
+                        Category: {titleCase(review.category)}
+                      </Card.Subtitle>
                       <Card.Img
                         variant="top"
                         src={review.review_img_url}
@@ -68,7 +71,10 @@ const Reviews = () => {
                       <Card.Text>
                         {review.votes} Votes {review.comment_count} Comments
                       </Card.Text>
-                      <Card.Text>Created at: {review.created_at} </Card.Text>
+                      <Card.Text>
+                        Created at:{" "}
+                        {new Date(review.created_at).toLocaleDateString()}{" "}
+                      </Card.Text>
                       <Button onClick={() => gotoReview(review.review_id)}>
                         Go to Review
                       </Button>
