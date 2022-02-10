@@ -11,6 +11,12 @@ export const getCategories = () => {
   });
 };
 
+export const getUsers = () => {
+  return reviewsApi.get("/users").then((res) => {
+    return res.data.users;
+  });
+};
+
 export const getReviews = (category, sortOptionIndex) => {
   const params = {};
   if (category && category !== "All") params.category = category;

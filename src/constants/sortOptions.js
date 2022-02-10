@@ -5,12 +5,12 @@ const sortOptions = [
     order: "DESC",
   },
   {
-    description: "Date: most recent",
+    description: "Date: newest",
     sortQuery: "created_at",
     order: "DESC",
   },
   {
-    description: "Date: least recent",
+    description: "Date: oldest",
     sortQuery: "created_at",
     order: "ASC",
   },
@@ -22,6 +22,16 @@ const sortOptions = [
   {
     description: "Votes: low to high",
     sortQuery: "votes",
+    order: "ASC",
+  },
+  {
+    description: "Comments: high to low",
+    sortQuery: "comment_count",
+    order: "DESC",
+  },
+  {
+    description: "Comments: low to high",
+    sortQuery: "comment_count",
     order: "ASC",
   },
   {

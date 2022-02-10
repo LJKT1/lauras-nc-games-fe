@@ -28,7 +28,7 @@ const SingleReview = () => {
           alt={review.title}
         />
         <Card.Text>{review.review_body}</Card.Text>
-        <Card.Text>By: {review.owner} </Card.Text>
+        <Card.Text>By: {review.owner}</Card.Text>
         <Card.Text>Created at: {review.created_at} </Card.Text>
         <Accordion>
           <Accordion.Item eventKey="0">
@@ -38,7 +38,11 @@ const SingleReview = () => {
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
-        <Button>{review.votes} Votes</Button>
+        {/* <Container> */}
+        <Button size="sm">↑</Button>
+        <Card.Text className="text-center">{review.votes} Votes</Card.Text>
+        <Button size="sm">↓</Button>
+        {/* </Container> */}
       </Card>
     </Container>
   );

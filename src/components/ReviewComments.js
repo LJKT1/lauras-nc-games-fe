@@ -16,8 +16,8 @@ const ReviewComments = (props) => {
 
   return (
     <ul>
-      <Container>
-        <Card style={{ width: "12rem" }}>
+      <Container fluid="md">
+        <Card style={{ width: "18rem" }}>
           <ListGroup>
             {comments.map((comment) => {
               return (
