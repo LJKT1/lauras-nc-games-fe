@@ -2,6 +2,7 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import sortOptions from "../constants/sortOptions";
 import Container from "react-bootstrap/Container";
+import { titleCase } from "../utils/textFormatting";
 
 const Queries = (props) => {
   return (
@@ -10,7 +11,7 @@ const Queries = (props) => {
         <NavDropdown
           onSelect={props.setCategory}
           title={`Category: ${
-            props.selectedCategory ? props.selectedCategory : "All"
+            props.selectedCategory ? titleCase(props.selectedCategory) : "All"
           }`}
           id="nav-dropdown"
         >
@@ -20,7 +21,7 @@ const Queries = (props) => {
           {props.categories.map((category) => {
             return (
               <NavDropdown.Item eventKey={category.slug} key={category.slug}>
-                {category.slug}
+                {titleCase(category.slug)}
               </NavDropdown.Item>
             );
           })}

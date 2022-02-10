@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import Accordion from "react-bootstrap/Accordion";
-import { UserContext } from "../contexts/UserContext";
-import { getSingleReview, patchReviewVotes } from "../utils/api";
+import { getSingleReview } from "../utils/api";
 import ReviewComments from "./ReviewComments";
+import ReviewVotes from "./ReviewVotes";
 import { titleCase } from "../utils/textFormatting";
 
 const SingleReview = () => {
@@ -19,7 +18,6 @@ const SingleReview = () => {
     });
   }, [review_id]);
 
-  let newVotes = 0;
   return (
     <Container fluid="md">
       <Card style={{ width: "18rem" }}>
@@ -48,16 +46,7 @@ const SingleReview = () => {
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
-        <Button size="sm" onClick={() => patchReviewVotes(review.review_id, 1)}>
-          ↑
-        </Button>
-        <Card.Text className="text-center">{review.votes} Votes</Card.Text>
-        <Button
-          size="sm"
-          onClick={() => patchReviewVotes(review.review_id, -1)}
-        >
-          ↓
-        </Button>
+        <ReviewVotes review={review} />
       </Card>
     </Container>
   );
