@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
-import Nav from "./components/Nav";
+import AppNav from "./components/AppNav";
 import Reviews from "./components/Reviews";
 import SingleReview from "./components/SingleReview";
 import ReviewComments from "./components/ReviewComments";
@@ -20,8 +19,7 @@ function App() {
         value={{ loggedInUser, setLoggedInUser, isLoggedIn }}
       >
         <div className="App">
-          <Header />
-          <Nav />
+          <AppNav />
           <Routes>
             <Route path="/" element={<Reviews />} />
             <Route path="/reviews" element={<Reviews />} />

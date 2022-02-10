@@ -20,7 +20,7 @@ const SingleReview = () => {
 
   return (
     <Container fluid="md">
-      <Card style={{ width: "18rem" }}>
+      <Card>
         <Card.Title className="m-2">{review.title}</Card.Title>
         <Card.Subtitle className="m-1">
           Category: {review.category && titleCase(review.category)}

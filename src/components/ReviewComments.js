@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
+import CommentForm from "./CommentForm";
 import { getReviewComments } from "../utils/api";
 
 const ReviewComments = (props) => {
@@ -30,6 +31,7 @@ const ReviewComments = (props) => {
               );
             })}
           </ListGroup>
+          {/* <CommentForm review_id={review_id} /> */}
         </Card>
       </Container>
     </ul>

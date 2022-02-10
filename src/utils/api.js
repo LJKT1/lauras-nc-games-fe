@@ -17,6 +17,13 @@ export const getUsers = () => {
   });
 };
 
+export const getUserData = (username) => {
+  //not currently implemented
+  return reviewsApi.get(`/users/${username}`).then((res) => {
+    return res.data.user;
+  });
+};
+
 export const getReviews = (category, sortOptionIndex) => {
   const params = {};
   if (category && category !== "All") params.category = category;
@@ -41,6 +48,15 @@ export const getReviewComments = (review_id) => {
   return reviewsApi.get(`/reviews/${review_id}/comments`).then((res) => {
     return res.data;
   });
+};
+
+export const postReviewComments = (review_id, comment) => {
+  //not currently implemented
+  return reviewsApi
+    .post(`/reviews/${review_id}/comments`, comment)
+    .then((res) => {
+      return res.data.comment;
+    });
 };
 
 export const patchReviewVotes = (review_id, vote) => {

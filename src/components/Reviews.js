@@ -53,7 +53,7 @@ const Reviews = () => {
       <main className="Reviews">
         <ul>
           <Container fluid="md">
-            <Card style={{ width: "18rem" }}>
+            <Card>
               <ListGroup>
                 {reviews.map((review) => {
                   return (
