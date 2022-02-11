@@ -14,18 +14,18 @@ const CommentForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const commentObj = {
+      author: loggedInUser,
+      body: newComment,
+    };
+    const review_id = props.review_id;
 
     setComments((comments) => {
-      const commentObj = {
-        author: loggedInUser,
-        review_id: props.review_id,
-        body: newComment,
-      };
-      console.log([commentObj, ...comments]);
       return [commentObj, ...comments];
     });
-
     setNewComment("");
+    commentObj.username = loggedInUser;
+    postReviewComments(review_id, commentObj);
   };
 
   return (
