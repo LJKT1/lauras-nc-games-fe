@@ -7,6 +7,7 @@ import SingleReview from "./components/SingleReview";
 import ReviewComments from "./components/ReviewComments";
 import { UserContext } from "./contexts/UserContext";
 import Users from "./components/Users";
+import Errors from "./components/Errors";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState("");
@@ -18,7 +19,7 @@ function App() {
       <UserContext.Provider
         value={{ loggedInUser, setLoggedInUser, isLoggedIn }}
       >
-        <div className="App">
+        <div className={`App__${loggedInUser}`}>
           <AppNav />
           <Routes>
             <Route path="/" element={<Reviews />} />
@@ -29,6 +30,7 @@ function App() {
               path="/reviews/:review_id/comments"
               element={<ReviewComments />}
             />
+            <Route path="*" element={<Errors />} />
           </Routes>
         </div>
       </UserContext.Provider>

@@ -38,6 +38,7 @@ const Reviews = () => {
       setReviews(res);
     });
   }, [selectedCategory, selectedSortOptionIndex]);
+
   return (
     <>
       <Queries

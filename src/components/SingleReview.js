@@ -11,13 +11,33 @@ import { titleCase } from "../utils/textFormatting";
 const SingleReview = () => {
   const { review_id } = useParams();
   const [review, setReview] = useState({});
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getSingleReview(review_id).then((res) => {
-      setReview(res);
-    });
+    getSingleReview(review_id)
+      .then((res) => {
+        setReview(res);
+      })
+      .catch((err) => {
+        setError(err);
+      });
   }, [review_id]);
 
+  if (error) {
+    return (
+      <>
+        <Container>
+          <Card>
+            <Card.Body>
+              <Card.Title>Error</Card.Title>
+              <Card.Text>Status: {error.response.status}</Card.Text>
+              <Card.Text>Message: {error.response.data.msg}</Card.Text>
+            </Card.Body>
+          </Card>
+        </Container>
+      </>
+    );
+  }
   return (
     <Container fluid="md">
       <Card>
