@@ -36,7 +36,7 @@ const ReviewComments = (props) => {
                 );
               })}
             </ListGroup>
-            <CommentForm review_id={review_id} />
+            <CommentForm comments={comments} review_id={review_id} />
           </Card.Body>
         </Card>
       </Container>
