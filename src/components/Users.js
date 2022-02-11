@@ -30,9 +30,6 @@ const Users = () => {
                 return (
                   <ListGroup.Item key={user.username}>
                     <Card.Title>{user.username}</Card.Title>
-                    <Button onClick={() => logIn(user.username)}>
-                      Log me in
-                    </Button>
                   </ListGroup.Item>
                 );
               })}

@@ -9,7 +9,7 @@ import { UserContext } from "./contexts/UserContext";
 import Users from "./components/Users";
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState("jessjelly");
+  const [loggedInUser, setLoggedInUser] = useState("");
 
   const isLoggedIn = loggedInUser !== null;
 
