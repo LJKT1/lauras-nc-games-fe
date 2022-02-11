@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 
 const CommentForm = ({ addComment, review_id }) => {
   const { loggedInUser } = useContext(UserContext);
-  const [newComment, setNewComment] = useState();
+  const [newComment, setNewComment] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();

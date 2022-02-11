@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import Container from "react-bootstrap/Container";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
+import { Container, Card, ListGroup, Button } from "react-bootstrap";
 import CommentForm from "./CommentForm";
-import { getReviewComments } from "../utils/api";
+import { getReviewComments, deleteComment } from "../utils/api";
 
 const ReviewComments = (props) => {
   const review_id = props.review_id;
@@ -18,15 +16,16 @@ const ReviewComments = (props) => {
   const addComment = (comment) => {
     setComments([...comments, comment]);
   };
+
   return (
     <ul>
       <Container fluid="md">
-        <Card>
-          <Card.Body>
-            <ListGroup>
-              {comments.map((comment) => {
-                return (
-                  <ListGroup.Item key={comment.comment_id}>
+        <ListGroup>
+          {comments.map((comment, index) => {
+            return (
+              <ListGroup.Item key={comment.comment_id}>
+                <Card>
+                  <Card.Body>
                     <Card.Text>{comment.body}</Card.Text>
                     <Card.Subtitle>Author: {comment.author}</Card.Subtitle>
 
@@ -35,13 +34,25 @@ const ReviewComments = (props) => {
                       {new Date(comment.created_at).toLocaleDateString()}
                     </Card.Subtitle>
                     <Card.Subtitle>{comment.votes} Votes</Card.Subtitle>
-                  </ListGroup.Item>
-                );
-              })}
-            </ListGroup>
-            <CommentForm addComment={addComment} review_id={review_id} />
-          </Card.Body>
-        </Card>
+                    <Button
+                      onClick={() => {
+                        setComments((currComments) => {
+                          const newComments = [...currComments];
+                          newComments.splice(index, 1);
+                          return newComments;
+                        });
+                        deleteComment(comment.comment_id);
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </ListGroup.Item>
+            );
+          })}
+        </ListGroup>
+        <CommentForm addComment={addComment} review_id={review_id} />
       </Container>
     </ul>
   );

@@ -65,3 +65,9 @@ export const patchReviewVotes = (review_id, vote) => {
       return res.data.review;
     });
 };
+
+export const deleteComment = (comment_id) => {
+  return reviewsApi.delete(`/comments/${comment_id}`).then((res) => {
+    return res;
+  });
+};
