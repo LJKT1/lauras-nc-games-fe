@@ -1,12 +1,11 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { postReviewComments } from "../utils/api";
 import { UserContext } from "../contexts/UserContext";
 import Form from "react-bootstrap/Form";
 
-const CommentForm = (props) => {
+const CommentForm = ({ addComment, review_id }) => {
   const { loggedInUser } = useContext(UserContext);
   const [newComment, setNewComment] = useState();
-  const [comments, setComments] = useState(props.comments);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,8 +14,8 @@ const CommentForm = (props) => {
       body: newComment,
     };
     setNewComment("");
-    postReviewComments(props.review_id, commentObj).then((comment) => {
-      setComments([...comments, comment]);
+    postReviewComments(review_id, commentObj).then((comment) => {
+      addComment(comment);
     });
   };
 

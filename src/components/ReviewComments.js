@@ -15,6 +15,9 @@ const ReviewComments = (props) => {
     });
   }, [review_id]);
 
+  const addComment = (comment) => {
+    setComments([...comments, comment]);
+  };
   return (
     <ul>
       <Container fluid="md">
@@ -36,7 +39,7 @@ const ReviewComments = (props) => {
                 );
               })}
             </ListGroup>
-            <CommentForm comments={comments} review_id={review_id} />
+            <CommentForm addComment={addComment} review_id={review_id} />
           </Card.Body>
         </Card>
       </Container>
