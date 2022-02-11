@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Container, Card, ListGroup, Button } from "react-bootstrap";
+import { UserContext } from "../contexts/UserContext";
 import CommentForm from "./CommentForm";
 import { getReviewComments, deleteComment } from "../utils/api";
 
 const ReviewComments = (props) => {
+  const { loggedInUser } = useContext(UserContext);
   const review_id = props.review_id;
   const [comments, setComments] = useState([]);
 
@@ -34,18 +36,21 @@ const ReviewComments = (props) => {
                       {new Date(comment.created_at).toLocaleDateString()}
                     </Card.Subtitle>
                     <Card.Subtitle>{comment.votes} Votes</Card.Subtitle>
-                    <Button
-                      onClick={() => {
-                        setComments((currComments) => {
-                          const newComments = [...currComments];
-                          newComments.splice(index, 1);
-                          return newComments;
-                        });
-                        deleteComment(comment.comment_id);
-                      }}
-                    >
-                      Delete
-                    </Button>
+                    {loggedInUser && loggedInUser === comment.author && (
+                      <Button
+                        onClick={() => {
+                          setComments((currComments) => {
+                            const newComments = [...currComments];
+                            newComments.splice(index, 1);
+                            return newComments;
+                          });
+                          deleteComment(comment.comment_id);
+                          console.log(loggedInUser);
+                        }}
+                      >
+                        Delete
+                      </Button>
+                    )}
                   </Card.Body>
                 </Card>
               </ListGroup.Item>
