@@ -51,7 +51,11 @@ export const getReviewComments = (review_id) => {
 };
 
 export const postReviewComments = (review_id, comment) => {
-  return reviewsApi.post(`/reviews/${review_id}/comments`, comment);
+  return reviewsApi
+    .post(`/reviews/${review_id}/comments`, comment)
+    .then((res) => {
+      return res.data.comment;
+    });
 };
 
 export const patchReviewVotes = (review_id, vote) => {

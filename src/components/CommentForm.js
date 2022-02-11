@@ -8,24 +8,16 @@ const CommentForm = (props) => {
   const [newComment, setNewComment] = useState();
   const [comments, setComments] = useState(props.comments);
 
-  useEffect(() => {
-    setComments(props.comments);
-  }, [props.comments]);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const commentObj = {
-      author: loggedInUser,
+      username: loggedInUser,
       body: newComment,
     };
-    const review_id = props.review_id;
-
-    setComments((comments) => {
-      return [commentObj, ...comments];
-    });
     setNewComment("");
-    commentObj.username = loggedInUser;
-    postReviewComments(review_id, commentObj);
+    postReviewComments(props.review_id, commentObj).then((comment) => {
+      setComments([...comments, comment]);
+    });
   };
 
   return (
