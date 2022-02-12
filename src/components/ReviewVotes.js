@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 
 const ReviewVotes = ({ review }) => {
   const [votes, setVotes] = useState();
-
+  const [err, setErr] = useState(null);
   useEffect(() => {
     setVotes(review.votes);
   }, [review]);
@@ -14,7 +14,11 @@ const ReviewVotes = ({ review }) => {
       <Button
         onClick={() => {
           setVotes(++review.votes);
-          patchReviewVotes(review.review_id, 1);
+          setErr(null);
+          patchReviewVotes(review.review_id, 1).catch((err) => {
+            setVotes(--review.votes);
+            setErr("Something went wrong, please try again");
+          });
         }}
       >
         ↑
@@ -23,7 +27,11 @@ const ReviewVotes = ({ review }) => {
       <Button
         onClick={() => {
           setVotes(--review.votes);
-          patchReviewVotes(review.review_id, -1);
+          setErr(null);
+          patchReviewVotes(review.review_id, -1).catch((err) => {
+            setVotes(++review.votes);
+            setErr("Something went wrong, please try again");
+          });
         }}
       >
         ↓

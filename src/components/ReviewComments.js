@@ -45,7 +45,6 @@ const ReviewComments = (props) => {
                             return newComments;
                           });
                           deleteComment(comment.comment_id);
-                          console.log(loggedInUser);
                         }}
                       >
                         Delete
