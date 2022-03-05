@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { patchReviewVotes } from "../utils/api";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, ButtonGroup } from "react-bootstrap";
 
 const ReviewVotes = ({ review }) => {
   const [votes, setVotes] = useState();
@@ -13,33 +13,36 @@ const ReviewVotes = ({ review }) => {
     <>
       <Card>
         <Card.Body>
-          <Card.Title className="text-center">{votes} Votes</Card.Title>
-          <Button
-            size="lg"
-            onClick={() => {
-              setVotes(++review.votes);
-              setErr(null);
-              patchReviewVotes(review.review_id, 1).catch((err) => {
-                setVotes(--review.votes);
-                setErr("Something went wrong, please try again");
-              });
-            }}
-          >
-            Upvote 👍
-          </Button>
-          <Button
-            size="lg"
-            onClick={() => {
-              setVotes(--review.votes);
-              setErr(null);
-              patchReviewVotes(review.review_id, -1).catch((err) => {
-                setVotes(++review.votes);
-                setErr("Something went wrong, please try again");
-              });
-            }}
-          >
-            Downvote 👎
-          </Button>
+          <Card.Header className="text-center">
+            <Card.Title>{votes} Votes</Card.Title>
+
+            <ButtonGroup className="d-grid gap-2">
+              <Button
+                onClick={() => {
+                  setVotes(++review.votes);
+                  setErr(null);
+                  patchReviewVotes(review.review_id, 1).catch((err) => {
+                    setVotes(--review.votes);
+                    setErr("Something went wrong, please try again");
+                  });
+                }}
+              >
+                👍
+              </Button>
+              <Button
+                onClick={() => {
+                  setVotes(--review.votes);
+                  setErr(null);
+                  patchReviewVotes(review.review_id, -1).catch((err) => {
+                    setVotes(++review.votes);
+                    setErr("Something went wrong, please try again");
+                  });
+                }}
+              >
+                👎
+              </Button>
+            </ButtonGroup>
+          </Card.Header>
         </Card.Body>
       </Card>
     </>

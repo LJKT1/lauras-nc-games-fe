@@ -60,6 +60,7 @@ const SingleReview = () => {
           <Card.Text className="m-1">
             Posted: {new Date(review.created_at).toLocaleDateString()}
           </Card.Text>
+          <ReviewVotes review={review} />
           <Accordion>
             <Accordion.Item eventKey="0">
               <Accordion.Header>
@@ -72,7 +73,6 @@ const SingleReview = () => {
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-          <ReviewVotes review={review} />
         </Card.Body>
       </Card>
     </Container>
