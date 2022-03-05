@@ -14,7 +14,7 @@ const ReviewVotes = ({ review }) => {
       <Card>
         <Card.Body>
           <Card.Header className="text-center">
-            <Card.Title>{votes} Votes</Card.Title>
+            <Card.Title>Votes: {votes} </Card.Title>
 
             <ButtonGroup className="d-grid gap-2">
               <Button

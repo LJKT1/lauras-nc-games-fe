@@ -29,15 +29,18 @@ const ReviewComments = (props) => {
                 <Card>
                   <Card.Body>
                     <Card.Text>{comment.body}</Card.Text>
-                    <Card.Subtitle>Author: {comment.author}</Card.Subtitle>
+                    <Card.Text className="m-1">
+                      Author: {comment.author}
+                    </Card.Text>
 
-                    <Card.Subtitle>
+                    <Card.Text className="m-1">
                       Posted:{" "}
                       {new Date(comment.created_at).toLocaleDateString()}
-                    </Card.Subtitle>
-                    <Card.Subtitle>{comment.votes} Votes</Card.Subtitle>
+                    </Card.Text>
+                    <Card.Text>Votes: {comment.votes} </Card.Text>
                     {loggedInUser && loggedInUser === comment.author && (
                       <Button
+                        size="sm"
                         onClick={() => {
                           setComments((currComments) => {
                             const newComments = [...currComments];
