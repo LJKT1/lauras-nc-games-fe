@@ -58,9 +58,11 @@ const Reviews = () => {
                     <Card className="m-1 review-card">
                       <Card.Body>
                         <Card.Header>
-                          <Card.Title>{review.title}</Card.Title>
+                          <Card.Title className="card-title">
+                            {review.title}
+                          </Card.Title>
                         </Card.Header>
-                        <Card.Subtitle className="mb-2 mt-2">
+                        <Card.Subtitle className="mb-1 mt-1">
                           Category: {titleCase(review.category)}
                         </Card.Subtitle>
                         <Card.Img
@@ -69,11 +71,13 @@ const Reviews = () => {
                           src={review.review_img_url}
                           alt={review.title}
                         />
-                        <Card.Text>Author: {review.owner} </Card.Text>
-                        <Card.Text>
+                        <Card.Text className="mb-1 mt-1">
+                          Author: {review.owner}{" "}
+                        </Card.Text>
+                        <Card.Text className="mb-1 mt-1">
                           {review.votes} Votes {review.comment_count} Comments
                         </Card.Text>
-                        <Card.Text>
+                        <Card.Text className="mb-1 mt-1">
                           Created at:
                           {new Date(
                             review.created_at
