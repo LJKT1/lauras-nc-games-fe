@@ -17,10 +17,9 @@ export const getUsers = () => {
   });
 };
 
-export const getUserData = (username) => {
-  //not currently implemented
+export const getUserAvatar = (username) => {
   return reviewsApi.get(`/users/${username}`).then((res) => {
-    return res.data.user;
+    return res.data.user.avatar_url;
   });
 };
 

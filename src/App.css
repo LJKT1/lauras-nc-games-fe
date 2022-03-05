@@ -12,3 +12,7 @@
   height: 30vw;
   object-fit: cover;
 }
+.avatar {
+  width: 75px;
+  border-radius: 50%;
+}

@@ -18,6 +18,7 @@ const Users = () => {
           <Card style={{ width: "18rem" }}>
             <ListGroup>
               {users.map((user) => {
+                console.log(user, "user");
                 return (
                   <ListGroup.Item key={user.username}>
                     <Card.Title>{user.username}</Card.Title>
