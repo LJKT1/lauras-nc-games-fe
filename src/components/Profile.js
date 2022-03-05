@@ -3,14 +3,13 @@ import { getUser } from "../utils/api";
 import { UserContext } from "../contexts/UserContext";
 import { Card, Container } from "react-bootstrap";
 
-//Temporary placeholder content is a copy of the Users page
-
 const Profile = () => {
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
-  //   const [user, setUser] = useState();
 
   getUser(loggedInUser).then((user) => {
     console.log(user);
+    //this does return user object but it then fails to render
+    // also user keeps getting logged out
     return (
       <>
         <Container>
