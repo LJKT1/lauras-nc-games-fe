@@ -7,3 +7,8 @@
   height: 10vw;
   object-fit: cover;
 }
+.sgl-review-img {
+  width: 75%;
+  height: 30vw;
+  object-fit: cover;
+}
