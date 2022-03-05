@@ -8,6 +8,7 @@ import ReviewComments from "./components/ReviewComments";
 import { UserContext } from "./contexts/UserContext";
 import Users from "./components/Users";
 import Errors from "./components/Errors";
+import Profile from "./components/Profile";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState("");
@@ -26,6 +27,7 @@ function App() {
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/users" element={<Users />} />
             <Route path="/reviews/:review_id" element={<SingleReview />} />
+            <Route path="/profile" element={<Profile />} />
             <Route
               path="/reviews/:review_id/comments"
               element={<ReviewComments />}

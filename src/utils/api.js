@@ -23,6 +23,12 @@ export const getUserAvatar = (username) => {
   });
 };
 
+export const getUser = (username) => {
+  return reviewsApi.get(`/users/${username}`).then((res) => {
+    return res.data.user;
+  });
+};
+
 export const getReviews = (category, sortOptionIndex) => {
   const params = {};
   if (category && category !== "All") params.category = category;

@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { Navbar, Nav, NavDropdown, Container, Image } from "react-bootstrap";
 import { getUserAvatar, getUsers } from "../utils/api";
+import { useNavigate } from "react-router-dom";
 
 const AppNav = () => {
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
@@ -17,6 +18,12 @@ const AppNav = () => {
 
   const [avatar, setAvatar] = useState();
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+
+  const gotoProfile = () => {
+    navigate(`/profile`);
+  };
 
   useEffect(() => {
     getUserAvatar(loggedInUser)
@@ -46,7 +53,7 @@ const AppNav = () => {
 
             {loggedInUser && (
               <NavDropdown title={loggedInUser} id="basic-nav-dropdown">
-                <NavDropdown.Item onClick={() => alert("Profile")}>
+                <NavDropdown.Item onClick={() => gotoProfile()}>
                   Profile
                 </NavDropdown.Item>
                 <NavDropdown.Item onClick={() => signOut()}>
