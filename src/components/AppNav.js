@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { Navbar, Nav, NavDropdown, Container, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { getUserAvatar, getUsers } from "../utils/api";
 import { useNavigate } from "react-router-dom";
 
@@ -38,7 +39,9 @@ const AppNav = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/">Laura's NC Games Reviews</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">
+          Laura's NC Games Reviews
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
