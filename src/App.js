@@ -16,10 +16,8 @@ function App() {
   const isLoggedIn = loggedInUser !== null;
 
   return (
-    <BrowserRouter>
-      <UserContext.Provider
-        value={{ loggedInUser, setLoggedInUser, isLoggedIn }}
-      >
+    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, isLoggedIn }}>
+      <BrowserRouter>
         <div className={`App__${loggedInUser}`}>
           <AppNav />
           <Routes>
@@ -35,8 +33,8 @@ function App() {
             <Route path="*" element={<Errors />} />
           </Routes>
         </div>
-      </UserContext.Provider>
-    </BrowserRouter>
+      </BrowserRouter>{" "}
+    </UserContext.Provider>
   );
 }
 
