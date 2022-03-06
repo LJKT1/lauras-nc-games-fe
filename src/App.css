@@ -13,6 +13,9 @@
   object-fit: cover;
 }
 .avatar {
-  width: 75px;
+  width: 50px;
   border-radius: 50%;
+}
+.profile-pic {
+  padding: 20%;
 }

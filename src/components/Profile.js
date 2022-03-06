@@ -20,27 +20,35 @@ const Profile = () => {
       });
   }, []);
 
-  //getUser(loggedInUser).then((user) => console.log(user));
-
-  // if (error) {
-  //   return (
-  //     <>
-  //       <Container>
-  //         <Card>
-  //           <Card.Body>
-  //             <Card.Title>Error</Card.Title>
-  //             <Card.Text>Status: {error.response.status}</Card.Text>
-  //             <Card.Text>Message: {error.response.data.msg}</Card.Text>
-  //           </Card.Body>
-  //         </Card>
-  //       </Container>
-  //     </>
-  //   );
-  // }
+  if (error) {
+    return (
+      <>
+        <Container>
+          <Card>
+            <Card.Body>
+              <Card.Title>Error</Card.Title>
+              <Card.Text>Status: {error.response.status}</Card.Text>
+              <Card.Text>Message: {error.response.data.msg}</Card.Text>
+            </Card.Body>
+          </Card>
+        </Container>
+      </>
+    );
+  }
   return (
     <Container>
       <Card>
-        <Card.Title>Username: {user?.username}</Card.Title>
+        <Card.Body>
+          <Card.Header>User: {user?.username}</Card.Header>
+          <Card.Img
+            variant="top"
+            className="profile-pic"
+            src={user?.avatar_url}
+            alt={user?.username}
+          />
+          <Card.Text>Name: {user?.name}</Card.Text>
+          <Card.Text>Username: {user?.username}</Card.Text>
+        </Card.Body>
       </Card>
     </Container>
   );
