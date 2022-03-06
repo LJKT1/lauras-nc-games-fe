@@ -4,6 +4,7 @@ import { Button, Card, ButtonGroup } from "react-bootstrap";
 
 const ReviewVotes = ({ review }) => {
   const [votes, setVotes] = useState();
+  const [hasVoted, setHasVoted] = useState(false);
   const [err, setErr] = useState(null);
   useEffect(() => {
     setVotes(review.votes);
@@ -14,12 +15,14 @@ const ReviewVotes = ({ review }) => {
       <Card>
         <Card.Body>
           <Card.Header className="text-center">
-            <Card.Title>Votes: {votes} </Card.Title>
-
+            <Card.Title>Votes: {votes}</Card.Title>
             <ButtonGroup className="d-grid gap-2">
+              {hasVoted && <Card.Text className="m-2">VOTE COUNTED</Card.Text>}
               <Button
+                disabled={hasVoted}
                 onClick={() => {
                   setVotes(++review.votes);
+                  setHasVoted(true);
                   setErr(null);
                   patchReviewVotes(review.review_id, 1).catch((err) => {
                     setVotes(--review.votes);
@@ -30,8 +33,10 @@ const ReviewVotes = ({ review }) => {
                 👍
               </Button>
               <Button
+                disabled={hasVoted}
                 onClick={() => {
                   setVotes(--review.votes);
+                  setHasVoted(true);
                   setErr(null);
                   patchReviewVotes(review.review_id, -1).catch((err) => {
                     setVotes(++review.votes);
