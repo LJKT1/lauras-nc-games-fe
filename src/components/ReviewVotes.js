@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { patchReviewVotes } from "../utils/api";
+import { patchReviewVotes, patchCommentVotes } from "../utils/api";
 import { Button, Card, ButtonGroup } from "react-bootstrap";
 
 const ReviewVotes = ({ review }) => {
@@ -24,10 +24,16 @@ const ReviewVotes = ({ review }) => {
                   setVotes(++review.votes);
                   setHasVoted(true);
                   setErr(null);
-                  patchReviewVotes(review.review_id, 1).catch((err) => {
-                    setVotes(--review.votes);
-                    setErr("Something went wrong, please try again");
-                  });
+                  if (!review.category) {
+                    patchCommentVotes(review.comment_id, 1).catch((err) => {
+                      setVotes(--review.votes);
+                      setErr("Something went wrong, please try again");
+                    });
+                  } else
+                    patchReviewVotes(review.review_id, 1).catch((err) => {
+                      setVotes(--review.votes);
+                      setErr("Something went wrong, please try again");
+                    });
                 }}
               >
                 👍
@@ -38,10 +44,16 @@ const ReviewVotes = ({ review }) => {
                   setVotes(--review.votes);
                   setHasVoted(true);
                   setErr(null);
-                  patchReviewVotes(review.review_id, -1).catch((err) => {
-                    setVotes(++review.votes);
-                    setErr("Something went wrong, please try again");
-                  });
+                  if (!review.category) {
+                    patchCommentVotes(review.comment_id, -1).catch((err) => {
+                      setVotes(++review.votes);
+                      setErr("Something went wrong, please try again");
+                    });
+                  } else
+                    patchReviewVotes(review.review_id, -1).catch((err) => {
+                      setVotes(++review.votes);
+                      setErr("Something went wrong, please try again");
+                    });
                 }}
               >
                 👎

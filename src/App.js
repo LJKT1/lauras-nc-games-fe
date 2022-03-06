@@ -11,7 +11,7 @@ import Errors from "./components/Errors";
 import Profile from "./components/Profile";
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState("");
+  const [loggedInUser, setLoggedInUser] = useState("jessjelly");
 
   const isLoggedIn = loggedInUser !== null;
 

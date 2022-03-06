@@ -3,6 +3,7 @@ import { Container, Card, ListGroup, Button } from "react-bootstrap";
 import { UserContext } from "../contexts/UserContext";
 import CommentForm from "./CommentForm";
 import { getReviewComments, deleteComment } from "../utils/api";
+import ReviewVotes from "./ReviewVotes";
 
 const ReviewComments = (props) => {
   const { loggedInUser } = useContext(UserContext);
@@ -38,6 +39,7 @@ const ReviewComments = (props) => {
                       {new Date(comment.created_at).toLocaleDateString()}
                     </Card.Text>
                     <Card.Text>Votes: {comment.votes} </Card.Text>
+                    <ReviewVotes review={comment} />
                     {loggedInUser && loggedInUser === comment.author && (
                       <Button
                         size="sm"

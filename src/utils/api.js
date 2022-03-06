@@ -71,6 +71,14 @@ export const patchReviewVotes = (review_id, vote) => {
     });
 };
 
+export const patchCommentVotes = (comment_id, vote) => {
+  return reviewsApi
+    .patch(`/comments/${comment_id}`, { inc_votes: vote })
+    .then((res) => {
+      return res.data.review;
+    });
+};
+
 export const deleteComment = (comment_id) => {
   return reviewsApi.delete(`/comments/${comment_id}`).then((res) => {
     return res;
