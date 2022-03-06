@@ -13,7 +13,6 @@ const Profile = () => {
     getUser(loggedInUser)
       .then((user) => {
         setUser(user);
-        console.log(user, "user");
       })
       .catch((err) => {
         setError(err);
