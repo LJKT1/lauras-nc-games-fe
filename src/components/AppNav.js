@@ -8,14 +8,24 @@ import { useNavigate } from "react-router-dom";
 const AppNav = () => {
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
 
-  const signOut = () => {
-    setLoggedInUser("");
+  const signIn = () => {
+    const username = prompt("Please enter username");
+    setLoggedInUser(username);
+    localStorage.setItem("user", username);
   };
 
-  const signIn = () => {
-    const username = window.prompt("Please enter username");
-    setLoggedInUser(username);
+  const signOut = () => {
+    setLoggedInUser("");
+    localStorage.removeItem("user");
   };
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      const foundUser = user;
+      setLoggedInUser(foundUser);
+    }
+  }, []);
 
   const [avatar, setAvatar] = useState();
   const [error, setError] = useState(null);
