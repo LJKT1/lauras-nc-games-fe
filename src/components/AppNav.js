@@ -17,6 +17,7 @@ const AppNav = () => {
   const signOut = () => {
     setLoggedInUser("");
     localStorage.removeItem("user");
+    navigate(`/`);
   };
 
   useEffect(() => {
