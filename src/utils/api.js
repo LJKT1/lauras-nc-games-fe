@@ -11,6 +11,7 @@ export const getCategories = () => {
   });
 };
 
+//Component for this exists but not currently implemented
 export const getUsers = () => {
   return reviewsApi.get("/users").then((res) => {
     return res.data.users;

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Container, Card, ListGroup } from "react-bootstrap";
 import { getUsers } from "../utils/api";
 
+//Not currently implemented
+
 const Users = () => {
   const [users, setUsers] = useState([]);
 
