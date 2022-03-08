@@ -10,7 +10,7 @@ This project is hosted at the URL https://lauras-nc-games.netlify.app/.
 
 ## Back End
 
-Laura's NC Games demo API can be found at the GitHub repository https://github.com/LJKT1/be-nc-games. The Heroku hosted version is at the URL https://lauras-nc-games.herokuapp.com/api.
+Laura's NC Games demo API can be found at the GitHub repository https://github.com/LJKT1/be-nc-games. The Heroku hosted version is at the URL https://lauras-nc-games-api.herokuapp.com/api.
 
 ## Cloning and installing dependencies
 

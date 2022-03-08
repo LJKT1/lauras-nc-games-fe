@@ -2,7 +2,7 @@ import axios from "axios";
 import sortOptions from "../constants/sortOptions";
 
 const reviewsApi = axios.create({
-  baseURL: "https://lauras-nc-games.herokuapp.com/api",
+  baseURL: "https://lauras-nc-games-api.herokuapp.com/api",
 });
 
 export const getCategories = () => {
